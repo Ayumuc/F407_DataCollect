@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "streambuf": "cpp",
+        "numeric": "cpp",
+        "string": "cpp",
+        "fstream": "cpp"
+    }
+}
