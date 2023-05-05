@@ -4,14 +4,15 @@ TARGET:建立tcp服务端，并且将RS485和客户端获取到的数据发到pl
 */
 #include "../inc/main.h"
 
-#define SERV_PORT     8266
+#define SERV_PORT     8268
 #define READ_CMD_LEN  12
 
 uint8_t buf[2048];
 
-void* Tcpsever_init(void*arg);
+void Tcpsever_init();
 
-void* Tcpsever_init(void*arg){
+void Tcpsever_init(){
+	
     uint8_t *send_buf = NULL;
     int sfd = -1, cfd = -1;
     int ret = -1, len = 0;
@@ -38,7 +39,7 @@ void* Tcpsever_init(void*arg){
     //服务器能接收并发链接的能力
     listen(sfd, 128);
 
-    printf("wait for connect ...\r\n");
+    printf("modbus wait for connect ...\r\n");
     addr_len = sizeof(client_addr);
     while (1)
     {
@@ -104,15 +105,18 @@ void* Tcpsever_init(void*arg){
 
     	        	send_buf = parseModbusCommand(buf, cmd_len, &size);
 //    	        	printf("size = %d\r\n",  size);
+					// printf("2\n");
     	            ret = send(cfd, send_buf, size, 0);
+					// printf("1\n");
     	            if (ret < 0)
     	            {
     	    	    printf("Error occured during sending\r\n");
     	                break;
     	            }
     	        }
-
+				usleep(100*10);
     	    }
+			sleep(1);
     	    close(cfd);
     	    cfd = -1;
     }

@@ -1,0 +1,43 @@
+{
+    "Factory_A": 
+	[ 	
+        {"Key":"FLASE"},
+        {"IP_NUM":"3"},
+        { "IP": "192.168.189.3","Channel_Num":"3"}, 
+		{ "IP": "192.168.189.4","Channel_Num":"1"}, 
+        { "IP": "192.168.189.5","Channel_Num":"1"}
+	], 
+
+    "Factory_B":[
+        {"Key":"True"},
+        {"IP_NUM":"3"},
+        {"IP":"192.168.1.101","Port":"4110","Channel_Num":"2"},
+        {"IP":"192.168.1.102","Port":"4111","Channel_Num":"2"},
+        {"IP":"192.168.1.103","Port":"4112","Channel_Num":"2"}
+    ],
+
+    "Factory_C":[
+        {"Key":"Flase"},
+        {"IP_NUM":"0"}
+    ],
+
+    "Factory_D":[
+        {"Key":"Flase"},
+        {"IP_NUM":"0"}
+    ],
+
+    "Factory_E":[
+        {"Key": "Flase"},
+        {"IP_NUM":"0"}
+    ],
+
+    "Factory_F": 
+	[ 	                   
+        {"Key":"FLASE"},
+        {"IP_NUM":"4"},
+        { "IP": "192.168.188.3","Channel_Num":"5"}, 
+		{ "IP": "192.168.188.4","Channel_Num":"1"}, 
+        { "IP": "192.168.188.5","Channel_Num":"6"}, 
+        { "IP": "192.168.188.6","Channel_Num":"3"}
+	] 
+}

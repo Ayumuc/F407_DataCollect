@@ -145,7 +145,7 @@ void* Usart_init (void*arg){
     txt_fd = open("./usart_config.txt",O_RDWR);
     if(txt_fd < 0 ){
         printf("open txt false!\n");
-        pthread_exit(NULL);
+        //pthread_exit(NULL);
     }
     read(txt_fd,file_buf,sizeof(file_buf));
     //printf("file_buf:%s\n",file_buf);
@@ -153,7 +153,7 @@ void* Usart_init (void*arg){
     usart_fd = open("/dev/ttysWK0",O_RDWR);
     if(usart_fd < 0 ){
         perror("open usart error!\n");
-        pthread_exit(NULL);
+        //pthread_exit(NULL);
     }
     else{
         printf("open rs485 success!\n");

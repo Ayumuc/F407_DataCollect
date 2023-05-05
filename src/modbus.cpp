@@ -4,6 +4,7 @@ TARGET:modbus协议解析和组包，并且将浮点数转换为CDAB输出
 */
 #include "../inc/main.h"
 #include "../inc/Acceleration.h"
+#include "../inc/data_collect.h"
 #define READ_DISCRETE_INPUTS       2
 #define READ_HOLDING_REGISTERS     3
 #define WRITE_SINGLE_COIL          5
@@ -216,16 +217,22 @@ unsigned char analogValueBytes[72];
 unsigned char* getAnalogValueBytes(void)
 {
 	double analogValues[20];
-	int8_t i;
-//	analogValues[0] = (double)data_pos;
-//	printf("Ax:%f\n Ay:%f\n Az:%f\n",Aer.Ax,Aer.Ay,Aer.Az);
-	analogValues[0] = (double)Aer.Ax;
-	analogValues[1] = (double)Aer.Ay;
-	analogValues[2] = (double)Aer.Az;
-	analogValues[3] = atof(speed_value);
-	for(i = 4 ; i < 17 ; i++){
-		analogValues[i] = 0;
+	int count = 0;
+	for(int n = 0 ; n < atoi(Factory_map["IP_NUM"].c_str()) ; n++){
+		for(int k = 0 ; k < atoi(Factory_map[("Channel"+to_string(n+1))].c_str()) ; k++){
+			analogValues[count] =  Factory_data_map[("IP"+to_string(n+1))+("Channel"+to_string(k+1))];
+			count++;
+		}
 	}
+	printf("\n");
+	for(int n = 0 ; n < 6 ; n++){
+		printf("analog[%d]:%f",n,analogValues[n]);
+	}
+	// for(auto iy = Factory_data_map.begin(); iy != Factory_data_map.end() ; iy++){
+	// 	cout << "key:" << iy->first <<"   value:" << iy->second << endl;
+	// }
+	char* write_buffer = NULL; 
+	int8_t i;
 	for(i=0;i<18;i++)
 	{
 		floatToByte(analogValues[i], &analogValueBytes[i*4]);

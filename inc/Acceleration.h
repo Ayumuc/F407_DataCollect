@@ -14,6 +14,7 @@ typedef struct Acceleration{
 }Acler;
 
 extern Acler Aer;
+extern Acler Aer2;
 
 
 /*名称	描述	备注

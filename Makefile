@@ -1,5 +1,9 @@
-INC = -I${HOME}/inc/*.h
-BIN = ${HOME}/bin/radio
-SRC = ${HOME}/src/*cpp
+TAR = ./bin/Data_collect
+OBJ = ./src/*.cpp
+INC = ./inc/*.h
+CC = g++
 
-build:aarch64-linux-gnu-g++ ${SRC} ${INC} -pthread -o ${BIN}
+all:
+	$(CC) $(OBJ) $(INC) -pthread -o $(TAR)
+clean:
+	rm -rf $(TAR)
