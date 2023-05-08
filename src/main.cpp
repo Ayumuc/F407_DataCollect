@@ -69,29 +69,27 @@ void config_read(void){
         F_Sum = F_Num_before + F_Num_after ;
         const Json::Value Array = root[F_Sum];
         out = Array[0]["Key"].asString();
-        //cout << F_Sum << endl;
-        //cout << "Key:" << out << endl;
         if(out.compare("True") == 0){
             out = Array[1]["IP_NUM"].asString();
             Factory_map.insert(pair<string,string>("IP_NUM",out));
-            //cout << "IP_NUM:" << out << endl;
             ip_num = atoi(out.c_str());
             for(int j = 0 ; j < ip_num ; j++){
                 out = Array[j+2]["IP"].asString();
                 Factory_map.insert(pair<string,string>(("IP"+to_string(j+1)),out));
                 out = Array[j+2]["Port"].asString();
                 Factory_map.insert(pair<string,string>(("Port"+to_string(j+1)),out));
-                //cout << ("IP"+to_string(j)) << ":"<<out;
                 out = Array[j+2]["Channel_Num"].asString();
                 Factory_map.insert(pair<string,string>(("Channel"+to_string(j+1)),out));
-                //cout << "    Channel_Num:" << out << endl;
+                for(int n = 0 ; n < atoi(Factory_map["Channel"+to_string(j+1)].c_str()) ; n++){
+                    out = Array[j+2]["Channel"+to_string(n+1)+"_offset"].asString();
+                    Factory_map.insert(pair<string,string>(("Channel"+to_string(n+1)+"offset"),out));
+                }
             }
             for(auto it = Factory_map.begin(); it != Factory_map.end() ; it++){
                 cout << "key:" << it->first <<"   value:" << it->second << endl;
             }
             break;
-        }
-       
+        }    
     }
     return ;
 }

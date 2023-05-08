@@ -225,12 +225,13 @@ unsigned char* getAnalogValueBytes(void)
 		}
 	}
 	printf("\n");
-	for(int n = 0 ; n < 6 ; n++){
+	for(int n = 0 ; n < (atoi(Factory_map["IP_NUM"].c_str()) * atoi(Factory_map[("Channel"+to_string(n+1))].c_str()) ); n++){
 		printf("analog[%d]:%f",n,analogValues[n]);
 	}
 	// for(auto iy = Factory_data_map.begin(); iy != Factory_data_map.end() ; iy++){
 	// 	cout << "key:" << iy->first <<"   value:" << iy->second << endl;
 	// }
+	
 	char* write_buffer = NULL; 
 	int8_t i;
 	for(i=0;i<18;i++)

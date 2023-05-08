@@ -10,10 +10,9 @@
 
     "Factory_B":[
         {"Key":"True"},
-        {"IP_NUM":"3"},
-        {"IP":"192.168.1.101","Port":"4110","Channel_Num":"2"},
-        {"IP":"192.168.1.102","Port":"4111","Channel_Num":"2"},
-        {"IP":"192.168.1.103","Port":"4112","Channel_Num":"2"}
+        {"IP_NUM":"1"},
+        {"IP":"192.168.1.101","Port":"4110","Channel_Num":"2",
+                    "Channel1_offset":"+1.12312","Channel2_offset":"-7.21231"}
     ],
 
     "Factory_C":[

@@ -109,7 +109,7 @@ void Tcp_sever_init(string Sever_Port){
                                     Data_From_F407[1] = Tcp_f407_Callbackbuf[3+(h*4+0)]; 
                                     Data_From_F407[2] = Tcp_f407_Callbackbuf[3+(h*4+3)];
                                     Data_From_F407[3] = Tcp_f407_Callbackbuf[3+(h*4+2)];
-                                    Bytetofloat = (float*)Data_From_F407;
+                                    Bytetofloat = (float*)Data_From_F407; 
                                     printf("Byte:%g\n",*Bytetofloat);
                                     // origin_data = ((Tcp_f407_Callbackbuf[(2*h)+3] << 8) | Tcp_f407_Callbackbuf[(2*h)+4]);
                                     // out = (double)origin_data;
